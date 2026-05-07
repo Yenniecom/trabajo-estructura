@@ -1,6 +1,3 @@
-# Sistema de Torneo de Videojuegos - Lista Circular Enlazada
-# Universidad de Cundinamarca - Estructuras de Informacion
-# CORREGIDO: El usuario debe registrar minimo 6 jugadores manualmente
 
 class NodoJugador:
     def __init__(self, nombre):
@@ -19,7 +16,6 @@ class ListaCircularTorneo:
             print("Error: El nombre no puede estar vacio.")
             return False
         
-        # Verificar que no exista duplicado
         if self.buscar_jugador_silencioso(nombre):
             print(f"Error: El jugador '{nombre}' ya esta registrado.")
             return False
@@ -91,7 +87,6 @@ class ListaCircularTorneo:
             print("No hay jugadores registrados.")
             return
         
-        # BLOQUEO: No eliminar si quedarian menos de 6
         if self.total_jugadores <= 6:
             print(f"Error: No se puede eliminar. Deben mantenerse minimo 6 jugadores (actual: {self.total_jugadores}).")
             return
@@ -143,7 +138,7 @@ class ListaCircularTorneo:
             if jugador.estado == "Pausado":
                 print(f"El jugador '{nombre}' ya esta pausado.")
             else:
-                # BLOQUEO: No pausar si quedarian menos de 2 activos
+                
                 activos = self.contar_activos()
                 if activos <= 2:
                     print(f"Error: No se puede pausar. Deben quedar minimo 2 jugadores activos (actual: {activos}).")
@@ -164,8 +159,7 @@ class ListaCircularTorneo:
         if self.cabeza is None:
             print("No hay jugadores registrados.")
             return
-        
-        # VALIDACION: Minimo 6 jugadores para simular
+     
         if self.total_jugadores < 6:
             print(f"Error: Se requieren minimo 6 jugadores registrados (actual: {self.total_jugadores}).")
             return
@@ -296,7 +290,6 @@ def menu_principal():
     print("Lista Circular - Estructuras de Informacion")
     print("="*60)
     
-    # FASE 1: REGISTRO OBLIGATORIO DE MINIMO 6 JUGADORES
     print("\n>>> FASE DE REGISTRO: Se requieren minimo 6 jugadores <<<")
     
     while torneo.total_jugadores < 6:
